@@ -678,8 +678,8 @@ wheels = [
 ]
 
 [[package]]
-name = "streamlit-stateful-attributes"
-version = "0.1.1"
+name = "streamlit-state-attribute"
+version = "0.1.2"
 source = { editable = "." }
 dependencies = [
     { name = "streamlit" },
