@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.1.2](https://github.com/david-fischer/streamlit-state-attribute/compare/v0.1.1...v0.1.2) (2025-05-05)
+
+
+### Bug Fixes
+
+* metadata ([8947b31](https://github.com/david-fischer/streamlit-state-attribute/commit/8947b31b70fa836792990f861988c9dc83ddc995))
+
 ## [0.1.1](https://github.com/david-fischer/streamlit-state-attribute/compare/v0.1.0...v0.1.1) (2025-05-05)
 
 
