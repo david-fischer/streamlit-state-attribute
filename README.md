@@ -6,6 +6,7 @@
 
 - [Idea](#idea)
 - [Advantages](#advantages)
+- [Install](#install)
 - [Examples](#examples)
 - [Background](#background)
 
@@ -20,6 +21,11 @@ with the session state.
  * Autosuggestions + type hints
  * Logging each state change (level = info)
  * Easily build Widgets with their own local state
+
+## Install
+```bash
+uv pip install streamlit-state-attribute
+```
 
 ## Examples
 ```python
