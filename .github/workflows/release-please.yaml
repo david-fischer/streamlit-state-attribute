@@ -1,0 +1,44 @@
+---
+name: Release Please
+permissions:
+  contents: write
+  pull-requests: write
+on:
+  push:
+    branches: [main]
+    paths:
+      - src/**
+      - .github/workflows/**
+      - pyproject.toml
+      - uv.lock
+      - README.md
+jobs:
+  release-please:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Release Please
+        id: release
+        uses: googleapis/release-please-action@v4
+        with:
+          token: ${{ secrets.GH_TOKEN }}
+          release-type: python
+      - uses: actions/checkout@v3
+        if: ${{ steps.release.outputs.prs_created == 'true' }}
+        with:
+          ref: release-please--branches--main
+      - name: Install uv
+        if: ${{ steps.release.outputs.prs_created == 'true' }}
+        uses: astral-sh/setup-uv@v5
+        with:
+          enable-cache: true
+          cache-dependency-glob: uv.lock
+          pyproject-file: pyproject.toml
+      - name: Update uv.lock in release PR
+        if: ${{ steps.release.outputs.prs_created == 'true' }}
+        run: |-
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+          git config --global user.name  "GitHub Actions"
+          uv sync
+          git add uv.lock
+          git commit -m "chore: update uv.lock version"
+          git push
