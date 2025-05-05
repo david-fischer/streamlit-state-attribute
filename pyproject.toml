@@ -33,7 +33,7 @@ include = [
 ]
 
 [tool.hatch.build.targets.wheel]
-packages = ["src/st_state"]
+packages = ["src/streamlit_state_attribute"]
 
 [tool.uv]
 required-version = ">=0.6.0"
