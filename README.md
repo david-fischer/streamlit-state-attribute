@@ -1,4 +1,4 @@
-# Streamlit Session State Attribute (SSSA)
+# Streamlit State Attribute
 
 <!-- START doctoc generated TOC please keep comment here to allow auto update -->
 <!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
@@ -18,11 +18,11 @@
  * Easily build Widgets which just need to handle their logic
 
 ```python
-from streamlit_state_attribute import StateProperty
+from streamlit_state_attribute import StateAttribute
 
 
 class SomeWidget:
-    some_attribute: str = StateProperty(default="test")
+    some_attribute: str = StateAttribute(default="test")
 
 
 # Shared state between all instances
@@ -32,7 +32,7 @@ some_widget.some_attribute = "3"  # st.session_state["SomeWidget.some_attribute"
 
 class SomeWidgetWithKey:
     key: str
-    some_attribute: str = StateProperty(default="test")
+    some_attribute: str = StateAttribute(default="test")
 
     def __init__(self, key: str) -> None:
         self.key = key
