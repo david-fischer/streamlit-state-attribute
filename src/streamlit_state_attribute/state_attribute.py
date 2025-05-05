@@ -10,8 +10,8 @@ T = TypeVar("T")
 Stateful = TypeVar("Stateful")
 
 
-class StateProperty(Generic[T, Stateful]):
-    """Descriptor that holds a default value or creates one via default_factory."""
+class StateAttribute(Generic[T, Stateful]):
+    """Descriptor which manages statefulness via st.session_state."""
 
     name: str
     owner_cls_name: str

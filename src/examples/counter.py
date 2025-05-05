@@ -3,12 +3,12 @@ from pathlib import Path
 
 import streamlit as st
 
-from st_state.state_property import StateProperty
+from streamlit_state_attribute import StateAttribute
 
 
 class Counter:
     key: str
-    value: int = StateProperty(default=0, rerun="on_change")
+    value: int = StateAttribute(default=0, rerun="on_change")
 
     def __init__(self, key: str) -> None:
         self.key = key

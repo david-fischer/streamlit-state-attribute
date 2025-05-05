@@ -3,14 +3,14 @@ from pathlib import Path
 
 import streamlit as st
 
-from st_state.state_property import StateProperty
+from streamlit_state_attribute import StateAttribute
 
 
 class GlobalState:
-    name: str = StateProperty(default="Test User")
-    age: int = StateProperty(default=99)
-    some_float: float = StateProperty(default=math.pi)
-    just_saved: bool = StateProperty(default=False)
+    name: str = StateAttribute(default="Test User")
+    age: int = StateAttribute(default=99)
+    some_float: float = StateAttribute(default=math.pi)
+    just_saved: bool = StateAttribute(default=False)
 
 
 def main() -> None:
