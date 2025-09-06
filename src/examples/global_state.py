@@ -10,7 +10,7 @@ from streamlit_state_attribute import StateAttribute
 class GlobalState:
     name: str = StateAttribute(default="Test User")
     age: int = StateAttribute(default=99)
-    some_float: float = StateAttribute(default=math.pi)
+    some_float: float = StateAttribute(default=math.pi, log_level=logging.CRITICAL)
     just_saved: bool = StateAttribute(default=False)
 
 

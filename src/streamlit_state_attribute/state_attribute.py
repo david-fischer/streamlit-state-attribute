@@ -1,12 +1,12 @@
+import logging
 from collections.abc import Callable
-from logging import getLogger
 from typing import Generic, Literal, TypeVar
 
 import streamlit as st
 
 from .unique_attribute_missing_error import UniqueAttributeMissingError
 
-logger = getLogger(__name__)
+logger = logging.getLogger(__name__)
 
 T = TypeVar("T")
 Stateful = TypeVar("Stateful")
@@ -34,6 +34,7 @@ class StateAttribute(Generic[T, Stateful]):
             attribute to avoid collisions across instances.
             This allows you for example to have several Counter classes with different
             values on the same page.
+        _log_level: The level at which all state changes should be logged.
     """
 
     _name: str
@@ -42,6 +43,11 @@ class StateAttribute(Generic[T, Stateful]):
     default_factory: Callable[[], T] | None
     rerun: Literal["never", "on_change", "on_assignment"]
     unique_attribute: str | None
+    _log_level: int = logging.DEBUG
+
+    def log(self, msg: str) -> None:
+        """Log message with prefix according to `_log_level`."""
+        logger.log(level=self._log_level, msg="StateAttribute: " + msg)
 
     def __init__(
         self,
@@ -49,11 +55,13 @@ class StateAttribute(Generic[T, Stateful]):
         default_factory: Callable[[], T] | None = None,
         rerun: Literal["never", "on_change", "on_assignment"] = "never",
         unique_attribute: str | None = None,
+        log_level: int = logging.DEBUG,
     ) -> None:
         self.default = default
         self.default_factory = default_factory
         self.rerun = rerun
         self.unique_attribute = unique_attribute
+        self._log_level = log_level
 
     def __set_name__(self, owner: type[Stateful], name: str) -> None:
         """Set name and owner class name when the attribute is defined in the class."""
@@ -81,7 +89,7 @@ class StateAttribute(Generic[T, Stateful]):
         key = self.session_state_key(instance)
         if key in st.session_state:
             return st.session_state[key]
-        logger.info(f"Key {key} not in session state. Initializing from default...")
+        self.log(f"Key {key} not in session state. Initializing from default...")
         value = (
             self.default_factory() if self.default_factory is not None else self.default
         )
@@ -91,11 +99,13 @@ class StateAttribute(Generic[T, Stateful]):
     def __set__(self, instance: Stateful, value: T) -> None:
         """Set the value in the streamlit session state (with logging)."""
         key = self.session_state_key(instance)
-        logger.info(f"Update: st.session_state[{key!r}]={value!r}")
         prev_value = st.session_state.get(key)
+        self.log(
+            f"st.session_state[{key!r}]={value!r}   --   (prev. value: {prev_value!r})"
+        )
         st.session_state[key] = value
         if self.rerun == "on_assignment" or (
             self.rerun == "on_change" and prev_value != value
         ):
-            logger.info("Trigger rerun.")
+            self.log("Trigger rerun.")
             st.rerun()
