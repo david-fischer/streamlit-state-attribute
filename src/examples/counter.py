@@ -8,7 +8,7 @@ from streamlit_state_attribute import StateAttribute
 
 class Counter:
     key: str
-    value: int = StateAttribute(default=0, rerun="on_change")
+    value: int = StateAttribute(default=0, rerun="on_change", unique_attribute="key")
 
     def __init__(self, key: str) -> None:
         self.key = key

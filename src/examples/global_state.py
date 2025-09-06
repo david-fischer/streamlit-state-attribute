@@ -1,3 +1,4 @@
+import logging
 import math
 from pathlib import Path
 
@@ -38,6 +39,7 @@ def main() -> None:
 
 
 if __name__ == "__main__":
+    logging.basicConfig(level=logging.INFO)
     main()
     with st.expander("Source Code"):
         with Path(__file__).open(encoding="utf-8") as f:

@@ -112,6 +112,7 @@ ignore = [
     "DOC201",       # No mandatory Returns section in docstrings.
     "FURB140",      # prefer list comps
     "D107",         # No mandatory docstrings for __init__
+    "D100",
 ]
 
 [tool.ruff.lint.per-file-ignores]
