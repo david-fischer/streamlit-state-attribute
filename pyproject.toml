@@ -1,6 +1,6 @@
 [project]
 name = "streamlit-state-attribute"
-version = "0.2.1"
+version = "0.2.2"
 description = "A lightweight utility to bind class attributes directly to Streamlit's session state, making it easy to persist and share values across reruns."
 readme = "README.md"
 requires-python = ">=3.11"
