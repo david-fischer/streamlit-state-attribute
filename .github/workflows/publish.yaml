@@ -20,7 +20,7 @@ jobs:
           enable-cache: true
           cache-dependency-glob: uv.lock
       - name: Install the project
-        run: >
+        run: |
           uv sync --all-extras --dev
           pytest
       - name: Build
