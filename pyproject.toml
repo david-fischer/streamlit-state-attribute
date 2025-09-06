@@ -1,12 +1,27 @@
 [project]
 name = "streamlit-state-attribute"
 version = "0.1.4"
-description = "Add your description here"
+description = "A lightweight utility to bind class attributes directly to Streamlit's session state, making it easy to persist and share values across reruns."
 readme = "README.md"
 requires-python = ">=3.11"
 dependencies = [
     "streamlit>=1.44.1",
 ]
+keywords = ["streamlit", "session state", "state management", "attributes", "sync"]
+classifiers = [
+    "Development Status :: 3 - Alpha",
+    "Intended Audience :: Developers",
+    "License :: OSI Approved :: MIT License",
+    "Programming Language :: Python",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Programming Language :: Python :: 3.13",
+    "Topic :: Software Development :: Libraries",
+    "Topic :: Utilities",
+    "Framework :: Streamlit",
+]
+
 
 [dependency-groups]
 dev = [
