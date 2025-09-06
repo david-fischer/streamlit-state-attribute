@@ -5,7 +5,7 @@ description = "A lightweight utility to bind class attributes directly to Stream
 readme = "README.md"
 requires-python = ">=3.11"
 dependencies = [
-    "streamlit>=1.44.1",
+    "streamlit>=1.30.0",
 ]
 keywords = ["streamlit", "session state", "state management", "attributes", "sync"]
 classifiers = [
@@ -52,10 +52,9 @@ extend-select=[
 #    "COM",    #flake8-commas
 #    "CPY",    #flake8-copyright
     "D",      #pydocstyle
-    "DOC",
     "DJ",     #flake8-django
-#    "DOC",     #pydoclint
-#    "DTZ",    #flake8-datetimez
+    "DOC",     #pydoclint
+    "DTZ",    #flake8-datetimez
     "E",
     "EM",     #flake8-errmsg
     "ERA",    #eradicate
@@ -95,7 +94,7 @@ extend-select=[
 #    "SLOT",   #flake8-slots
 #    "T10",    #flake8-debugger
 #    "T20",    #flake8-print
-    "TCH",    #flake8-type-checking
+    "TC",    #flake8-type-checking
     "TD",     #flake8-todos
     "TID",    #flake8-tidy-imports
     "TRY",    #tryceratops
@@ -112,11 +111,12 @@ ignore = [
     "FURB140",      # prefer list comps
     "D107",         # No mandatory docstrings for __init__
     "D100",
+    "B903",         # No mandatory dataclass usage (due to descriptor)
 ]
 
 [tool.ruff.lint.per-file-ignores]
-"src/tests/*" = ["D"]
-"src/examples/*" = ["D"]
+"src/tests/*" = ["D", "PLR2004", "SLF001"]
+"src/examples/*" = ["D", "PLR2004"]
 
 [tool.ruff]
 
@@ -132,4 +132,10 @@ classmethod-decorators = ["classmethod", "pydantic.field_validator"]
 convention = "google"
 
 [tool.pytest.ini_options]
-pythonpath="src"
+pythonpath=["src", "src/tests"]
+testpaths=["src/tests"]
+
+[tool.inline-snapshot]
+format-command="ruff check --fix-only --stdin-filename {filename} | ruff format --stdin-filename {filename}"
+default-flags=["report"]
+default-flags-tui=["create", "review"]

@@ -39,3 +39,9 @@ repos:
       - id: doctoc
         args: [--title, '**Contents**']
         files: README.md
+  - repo: https://github.com/abravalheri/validate-pyproject
+    rev: v0.24.1
+    hooks:
+      - id: validate-pyproject
+        # Optional extra validations from SchemaStore:
+        additional_dependencies: ['validate-pyproject-schema-store[all,store]']
