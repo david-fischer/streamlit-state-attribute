@@ -108,11 +108,15 @@ extend-select=[
 ignore = [
     "ANN401",       # Using Any-type should be allowed
     "ISC001",       # Incompatible with formatter
-    "D",            # No docstrings required for this project.
     "TD003",        # No links for TODOs.
     "DOC201",       # No mandatory Returns section in docstrings.
     "FURB140",      # prefer list comps
+    "D107",         # No mandatory docstrings for __init__
 ]
+
+[tool.ruff.lint.per-file-ignores]
+"src/tests/*" = ["D"]
+"src/examples/*" = ["D"]
 
 [tool.ruff]
 
