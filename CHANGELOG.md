@@ -1,5 +1,13 @@
 # Changelog
 
+## [0.2.0](https://github.com/david-fischer/streamlit-state-attribute/compare/v0.1.4...v0.2.0) (2025-09-06)
+
+
+### Features
+
+* add log-level per StateAttribute ([c4f956f](https://github.com/david-fischer/streamlit-state-attribute/commit/c4f956fced6d695d09f10801c90de37190243eaf))
+* add StateAttribute.unique_attribute ([01c81bf](https://github.com/david-fischer/streamlit-state-attribute/commit/01c81bf24121927a42756e9ac064f408201e11c6))
+
 ## [0.1.4](https://github.com/david-fischer/streamlit-state-attribute/compare/v0.1.3...v0.1.4) (2025-05-05)
 
 
