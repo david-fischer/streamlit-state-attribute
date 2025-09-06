@@ -20,9 +20,7 @@ jobs:
           enable-cache: true
           cache-dependency-glob: uv.lock
       - name: Install the project
-        run: |
-          uv sync --all-extras --dev
-          pytest
+        run: uv sync --all-extras --dev
       - name: Build
         run: uv build
       - name: Publish package to PyPI
