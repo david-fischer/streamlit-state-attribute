@@ -1,5 +1,13 @@
 # Changelog
 
+## [0.2.3](https://github.com/david-fischer/streamlit-state-attribute/compare/v0.2.2...v0.2.3) (2025-09-06)
+
+
+### Bug Fixes
+
+* build pipeline ([807e9c4](https://github.com/david-fischer/streamlit-state-attribute/commit/807e9c4688b2e74403d8fc2493f99afe72ab1066))
+* **tests:** add missing dependencies ([77fa6b3](https://github.com/david-fischer/streamlit-state-attribute/commit/77fa6b34ee4aec680a71feb66cb10e0dcfb54ce3))
+
 ## [0.2.2](https://github.com/david-fischer/streamlit-state-attribute/compare/v0.2.1...v0.2.2) (2025-09-06)
 
 
