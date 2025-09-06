@@ -4,7 +4,7 @@ if TYPE_CHECKING:
     from .state_attribute import StateAttribute
 
 
-class UniqueAttributeMissingError(ValueError):
+class UniqueAttributeMissingError(AttributeError):
     """StateAttribute has unique_attribute defined which is missing at the parent class."""
 
     def __init__(self, sa: "StateAttribute", instance: Any) -> None:
